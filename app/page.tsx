@@ -4,11 +4,11 @@ import Footer from './_components/shared/Footer';
 
 const Homepage: NextPage = () => {
     return (
-        <div className="mt-3">
+        <div className='mt-3'>
             <HeroWrapper />
             <Footer />
         </div>
-    )
+    );
 };
 
 export default Homepage;

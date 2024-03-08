@@ -12,20 +12,25 @@ const HeroWrapper: FC = () => {
                         <span className='dark:text-violet-400'>Sync</span>
                     </h1>
                     <p className='mt-6 mb-8 text-lg sm:mb-12'>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium, officiis quia. Officiis ratione vel nam accusamus, incidunt quidem voluptas quae quam consequatur quod asperiores sit sunt dolorem maxime excepturi tempora necessitatibus velit sint accusantium numquam saepe fuga beatae esse. Voluptatem?
+                        Lorem ipsum dolor sit, amet consectetur adipisicing
+                        elit. Accusantium, officiis quia. Officiis ratione vel
+                        nam accusamus, incidunt quidem voluptas quae quam
+                        consequatur quod asperiores sit sunt dolorem maxime
+                        excepturi tempora necessitatibus velit sint accusantium
+                        numquam saepe fuga beatae esse. Voluptatem?
                     </p>
                     <div className='flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start'>
                         <Button
-                            variant={"default"}
+                            variant={'default'}
                             className='px-8 py-3 text-lg font-semibold rounded dark:bg-violet-400 dark:text-gray-900'
                         >
-                            <Link href="/login">Try now</Link>
+                            <Link href='/login'>Try now</Link>
                         </Button>
                         <Button
-                            variant={"secondary"}
+                            variant={'secondary'}
                             className='px-8 py-3 text-lg font-semibold border rounded dark:border-gray-100'
                         >
-                            <Link href="/register">Register</Link>
+                            <Link href='/register'>Register</Link>
                         </Button>
                     </div>
                 </div>

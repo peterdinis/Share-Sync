@@ -25,9 +25,7 @@ const Footer: React.FC = () => {
                 <div className='flex flex-wrap items-center justify-center md:justify-between'>
                     <div className='mx-auto w-full px-4 text-center md:w-6/12'>
                         <div className='text-blueGray-500 py-1 text-sm font-semibold'>
-                            <a
-                                className='text-blueGray-500 text-2xl hover:text-gray-800'
-                            >
+                            <a className='text-blueGray-500 text-2xl hover:text-gray-800'>
                                 <motion.span
                                     className='inline-block'
                                     whileHover={{ scale: 1.1 }}
