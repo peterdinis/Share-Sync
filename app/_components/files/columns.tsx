@@ -7,6 +7,7 @@ export type UploadedFile = {
   name: string;
   bytes: number;
   image: string;
+  createdAt: string | Date;
 }
  
 export const columns: ColumnDef<UploadedFile>[] = [
@@ -22,4 +23,9 @@ export const columns: ColumnDef<UploadedFile>[] = [
     accessorKey: "image",
     header: "Image",
   },
+
+  {
+    accessorKey: "createdAt",
+    header: "Created At"
+  }
 ]
