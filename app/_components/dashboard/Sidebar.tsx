@@ -3,8 +3,6 @@
 import { FC, useState } from 'react';
 import classNames from 'classnames';
 import { XCircle, Menu, Upload, Files } from 'lucide-react';
-import { useToast } from '@/components/ui/use-toast';
-import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import {
@@ -13,12 +11,10 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from '@/components/ui/tooltip';
+import UploadModal from '../files/UploadModal';
 
 const Sidebar: FC = () => {
     const [collapsed, setSidebarCollapsed] = useState(false);
-    const { toast } = useToast();
-    const router = useRouter();
-
     return (
         <div
             className={classNames({
@@ -43,14 +39,14 @@ const Sidebar: FC = () => {
                             <div className='mt-8'>
                                 <Button variant={'ghost'} value='sm'>
                                     <Upload />
-                                    <Link href='/upload'>Upload new file</Link>
+                                    <UploadModal modalText='Upload file'/>
                                 </Button>
                             </div>
 
                             <div className='mt-8'>
                                 <Button variant={'ghost'} value='sm'>
                                     <Files />
-                                    <Link href='/files'>My all files</Link>
+                                    <Link href='/dashboard'>My all files</Link>
                                 </Button>
                             </div>
                         </div>
@@ -68,6 +64,7 @@ const Sidebar: FC = () => {
                                             >
                                                 <Link href='/upload'>
                                                     <Upload />
+                                                    <UploadModal />
                                                 </Link>
                                                 <TooltipContent>
                                                     Upload file
@@ -85,7 +82,7 @@ const Sidebar: FC = () => {
                                                 variant={'ghost'}
                                                 size={'sm'}
                                             >
-                                                <Link href='/files'>
+                                                <Link href='/dashboard'>
                                                     <Files />
                                                 </Link>
                                                 <TooltipContent>
