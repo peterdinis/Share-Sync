@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -21,16 +21,28 @@ const Navigation: FC = () => {
           </Link>
         </div>
         <div className="hidden md:flex space-x-4">
-          <Link className="text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100" href="#">
+          <Link
+            className="text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100"
+            href="#"
+          >
             Home
           </Link>
-          <Link className="text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100" href="#">
+          <Link
+            className="text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100"
+            href="#"
+          >
             About
           </Link>
-          <Link className="text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100" href="#">
+          <Link
+            className="text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100"
+            href="#"
+          >
             Services
           </Link>
-          <Link className="text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100" href="#">
+          <Link
+            className="text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100"
+            href="#"
+          >
             Contact
           </Link>
         </div>
@@ -46,7 +58,10 @@ const Navigation: FC = () => {
           </Button>
         </div>
       </div>
-      <div className={`mt-4 md:hidden ${isMobileMenuOpen ? "block" : "hidden"}`} id="mobile-menu">
+      <div
+        className={`mt-4 md:hidden ${isMobileMenuOpen ? "block" : "hidden"}`}
+        id="mobile-menu"
+      >
         <Link
           className="block py-1 text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100"
           href="#"
