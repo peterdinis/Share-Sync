@@ -1,9 +1,7 @@
-import { NextPage } from "next";
+import { NextPage } from 'next';
 
 const Homepage: NextPage = () => {
-  return (
-    <>aaaa</>
-  )
-}
+    return <>aaaa</>;
+};
 
 export default Homepage;
