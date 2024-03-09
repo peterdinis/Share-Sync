@@ -12,7 +12,7 @@ import {
     TooltipTrigger,
 } from '@/components/ui/tooltip';
 import UploadModal from '../files/UploadModal';
-import { AiOutlineTeam } from "react-icons/ai";
+import { AiOutlineTeam } from 'react-icons/ai';
 
 const Sidebar: FC = () => {
     const [collapsed, setSidebarCollapsed] = useState(false);

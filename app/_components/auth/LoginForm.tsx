@@ -5,9 +5,9 @@ import { FC } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import {useForm, SubmitHandler} from "react-hook-form";
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { account } from '@/app/_appwrite/connect';
-import Cookie from "js-cookie";
+import Cookie from 'js-cookie';
 
 interface ILoginFormData {
     email: string;
@@ -17,26 +17,37 @@ interface ILoginFormData {
 const LoginForm: FC = () => {
     const router = useRouter();
     const { toast } = useToast();
-    const { register, handleSubmit, formState: { errors } } = useForm<ILoginFormData>();
-    const { toast } = useToast();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<ILoginFormData>();
 
+    const loginUser: SubmitHandler<ILoginFormData> = async (
+        data: ILoginFormData
+    ) => {
+        const { email, password } = data;
+        const response = await account.createEmailPasswordSession(
+            email,
+            password
+        );
+        console.log(response);
+        /*  if(response.status === true) {
+            toast({
+                duration: 2000,
+                className: "bg-green-500",
+                title: "Account was created successfully"
+            })
+            router.push("/login");
+        } else {
+            toast({
+                duration: 2000,
+                className: "bg-red-500",
+                title: "Account was not created"
+            });
 
-    const loginUser = async () => {
-        try {
-            toast({
-                title: 'Login was succesfull',
-                className: 'bg-green-400',
-                duration: 2000,
-            });
-            router.push('/dashboard');
-        } catch (error) {
-            toast({
-                title: 'Login failed',
-                variant: 'destructive',
-                duration: 2000,
-            });
-            router.push('/login');
-        }
+            return;
+        } */
     };
 
     return (
@@ -50,60 +61,60 @@ const LoginForm: FC = () => {
                         >
                             Log in
                         </h2>
-                        <div className='mt-12'>
-                            <div>
-                                <div className='text-sm font-bold text-gray-700 tracking-wide'>
-                                    Email Address
-                                </div>
-                                <Input
-                                    id='email'
-                                    type='email'
-                                    value={credentials.email}
-                                    onChange={(
-                                        e: ChangeEvent<HTMLInputElement>
-                                    ) =>
-                                        setCredentials({
-                                            ...credentials,
-                                            email: e.target.value,
-                                        })
-                                    }
-                                />
-                            </div>
-                            <div className='mt-8'>
-                                <div className='flex justify-between items-center'>
+                        <form onSubmit={handleSubmit(loginUser)}>
+                            <div className='mt-12'>
+                                <div>
                                     <div className='text-sm font-bold text-gray-700 tracking-wide'>
-                                        Password
+                                        Email Address
                                     </div>
+                                    <input
+                                        id='email'
+                                        type='email'
+                                        className='w-full text-lg py-2 border-b border-gray-300 rounded-2xl focus:outline-none focus:border-indigo-500'
+                                        {...register('email', {
+                                            required: true,
+                                        })}
+                                    />
+                                    {errors.email && (
+                                        <p className='text-red-700 font-bold text-sm mt-3 ml-3'>
+                                            Email is required
+                                        </p>
+                                    )}
                                 </div>
-                                <Input
-                                    type='password'
-                                    id='password'
-                                    value={credentials.password}
-                                    onChange={(
-                                        e: ChangeEvent<HTMLInputElement>
-                                    ) =>
-                                        setCredentials({
-                                            ...credentials,
-                                            password: e.target.value,
-                                        })
-                                    }
-                                />
+                                <div className='mt-8'>
+                                    <div className='flex justify-between items-center'>
+                                        <div className='text-sm font-bold text-gray-700 tracking-wide'>
+                                            Password
+                                        </div>
+                                    </div>
+                                    <input
+                                        type='password'
+                                        id='password'
+                                        className='w-full text-lg py-2 border-b border-gray-300 rounded-2xl focus:outline-none focus:border-indigo-500'
+                                        {...register('password', {
+                                            required: true,
+                                        })}
+                                    />
+                                    {errors.password && (
+                                        <p className='text-red-700 font-bold text-sm mt-3 ml-3'>
+                                            Password is required
+                                        </p>
+                                    )}
+                                </div>
+                                <div className='mt-10'>
+                                    <Button size={'lg'}>Login</Button>
+                                </div>
+                                <div className='mt-12 text-sm font-display font-semibold text-gray-700 text-center'>
+                                    No account ?{' '}
+                                    <Link
+                                        href='/register'
+                                        className='cursor-pointer text-primary'
+                                    >
+                                        Create new account here
+                                    </Link>
+                                </div>
                             </div>
-                            <div className='mt-10'>
-                                <Button onClick={loginUser} size={'lg'}>
-                                    Log In
-                                </Button>
-                            </div>
-                            <div className='mt-12 text-sm font-display font-semibold text-gray-700 text-center'>
-                                Don't have an account ? <br />
-                                <Link
-                                    href='/register'
-                                    className='cursor-pointer text-primary'
-                                >
-                                    Sign up
-                                </Link>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
