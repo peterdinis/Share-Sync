@@ -6,9 +6,13 @@ import { Button } from '@/components/ui/button';
 import { FC, JSX, SVGProps } from 'react';
 import { SiFiles } from 'react-icons/si';
 import { CiMenuBurger } from 'react-icons/ci';
+import { useAuthStore } from '@/app/_store/authStore';
 
 const Navigation: FC = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const { user } = useAuthStore();
+
+    console.log(user);
 
     const toggleMobileMenu = () => {
         setMobileMenuOpen(!isMobileMenuOpen);
@@ -23,25 +27,35 @@ const Navigation: FC = () => {
                     </Link>
                 </div>
                 <div className='hidden md:flex space-x-4'>
-                    <Link
-                        className='text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'
-                        href='/'
-                    >
-                        Home
-                    </Link>
-                    <Link
-                        className='text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'
-                        href='/login'
-                    >
-                        Login
-                    </Link>
+                    {!user ? (
+                        <>
+                            <Link
+                                className='text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'
+                                href='/'
+                            >
+                                Home
+                            </Link>
+                            <Link
+                                className='text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'
+                                href='/login'
+                            >
+                                Login
+                            </Link>
 
-                    <Link
-                        className='text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'
-                        href='/register'
-                    >
-                        Register
-                    </Link>
+                            <Link
+                                className='text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'
+                                href='/register'
+                            >
+                                Register
+                            </Link>
+                        </>
+                    ) : (
+                        <>
+                            <div className='text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'>
+                                {user?.providerUid}
+                            </div>
+                        </>
+                    )}
                 </div>
                 <div className='md:hidden'>
                     <Button
@@ -59,24 +73,34 @@ const Navigation: FC = () => {
                 className={`mt-4 md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}
                 id='mobile-menu'
             >
-                <Link
-                    className='block py-1 text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'
-                    href='/'
-                >
-                    Home
-                </Link>
-                <Link
-                    className='block py-1 text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'
-                    href='/login'
-                >
-                    Login
-                </Link>
-                <Link
-                    className='block py-1 text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'
-                    href='/register'
-                >
-                    Register
-                </Link>
+                {!user ? (
+                    <>
+                        <Link
+                            className='block py-1 text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'
+                            href='/'
+                        >
+                            Home
+                        </Link>
+                        <Link
+                            className='block py-1 text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'
+                            href='/login'
+                        >
+                            Login
+                        </Link>
+                        <Link
+                            className='block py-1 text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'
+                            href='/register'
+                        >
+                            Register
+                        </Link>
+                    </>
+                ) : (
+                    <>
+                        <div className='text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'>
+                            {user?.providerUid}
+                        </div>
+                    </>
+                )}
             </div>
         </section>
     );

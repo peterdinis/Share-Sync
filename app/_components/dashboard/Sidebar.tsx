@@ -12,10 +12,20 @@ import {
     TooltipTrigger,
 } from '@/components/ui/tooltip';
 import UploadModal from '../files/UploadModal';
-import { AiOutlineTeam } from "react-icons/ai";
+import { AiOutlineTeam } from 'react-icons/ai';
+import { IoMdLogOut } from 'react-icons/io';
+import { account } from '@/app/_appwrite/connect';
+import { useRouter } from 'next/navigation';
 
 const Sidebar: FC = () => {
     const [collapsed, setSidebarCollapsed] = useState(false);
+    const router = useRouter();
+
+    const logoutUser = async () => {
+        await account.deleteSession('current');
+        router.push('/login');
+    };
+
     return (
         <div
             className={classNames({
@@ -55,6 +65,13 @@ const Sidebar: FC = () => {
                                 <Button variant={'ghost'} value='sm'>
                                     <AiOutlineTeam className='w-8 h-8' />
                                     <Link href='/teams'>My teams</Link>
+                                </Button>
+                            </div>
+
+                            <div className='mt-8'>
+                                <Button variant={'ghost'} value='sm'>
+                                    <IoMdLogOut className='w-8 h-8' />
+                                    <span>Logout</span>
                                 </Button>
                             </div>
                         </div>
@@ -114,6 +131,25 @@ const Sidebar: FC = () => {
                                                 </Link>
                                                 <TooltipContent>
                                                     My Teams
+                                                </TooltipContent>
+                                            </Button>
+                                        </TooltipTrigger>
+                                    </Tooltip>
+                                </TooltipProvider>
+                            </div>
+                            <div className='mt-8'>
+                                <TooltipProvider>
+                                    <Tooltip>
+                                        <TooltipTrigger>
+                                            <Button
+                                                variant={'ghost'}
+                                                size={'sm'}
+                                            >
+                                                <span>
+                                                    <IoMdLogOut className='w-8 h-8' />
+                                                </span>
+                                                <TooltipContent>
+                                                    Logout
                                                 </TooltipContent>
                                             </Button>
                                         </TooltipTrigger>

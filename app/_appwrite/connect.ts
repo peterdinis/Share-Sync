@@ -9,5 +9,5 @@ client
 export const account = new Account(client);
 export const teams = new Teams(client);
 
-export {ID} from "appwrite";
+export { ID } from 'appwrite';
 export default client;
