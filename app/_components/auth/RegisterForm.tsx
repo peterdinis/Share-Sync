@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useState, ChangeEvent, FC } from 'react';
+import { useState, FC } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import Link from 'next/link';
 import Input from '../shared/Input';
@@ -24,7 +24,7 @@ const RegisterForm: FC = () => {
     });
     const { toast } = useToast();
 
-    const registerUser: SubmitHandler<IRegisterFormData> = async (data) => {
+    const registerUser: SubmitHandler<IRegisterFormData> = async (data: IRegisterFormData) => {
         const { email, password } = data;
         const response = await account.create('unique()', email, password);
         console.log(response)
@@ -41,6 +41,7 @@ const RegisterForm: FC = () => {
                         >
                             Register
                         </h2>
+                        <form onSubmit={handleSubmit(registerUser)}>
                         <div className='mt-12'>
                             <div>
                                 <div className='text-sm font-bold text-gray-700 tracking-wide'>
@@ -50,15 +51,10 @@ const RegisterForm: FC = () => {
                                     id='email'
                                     type='email'
                                     value={credentials.email}
-                                    onChange={(
-                                        e: ChangeEvent<HTMLInputElement>
-                                    ) =>
-                                        setCredentials({
-                                            ...credentials,
-                                            email: e.target.value,
-                                        })
-                                    }
+                                    {...register('email', { required: true })} 
                                 />
+                                {errors.email && <p className="text-red-700 font-bold text-xl">Email is required</p>}
+
                             </div>
                             <div className='mt-8'>
                                 <div className='flex justify-between items-center'>
@@ -70,15 +66,9 @@ const RegisterForm: FC = () => {
                                     type='password'
                                     id='password'
                                     value={credentials.password}
-                                    onChange={(
-                                        e: ChangeEvent<HTMLInputElement>
-                                    ) =>
-                                        setCredentials({
-                                            ...credentials,
-                                            password: e.target.value,
-                                        })
-                                    }
+                                    {...register('password', { required: true })}
                                 />
+                                {errors.password && <p className='text-red-700 font-bold text-xl'>Password is required</p>}
                             </div>
                             <div className='mt-10'>
                                 <Button size={'lg'}>
@@ -95,6 +85,7 @@ const RegisterForm: FC = () => {
                                 </Link>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
