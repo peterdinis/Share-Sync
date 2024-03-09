@@ -23,7 +23,6 @@ export default function RootLayout({
         <html lang='en'>
             <body className={inter.className}>
                 <Navigation />
-                {children}
                 <ScrollToTopWrapper />
                 <Suspense fallback={<Loader />}>{children}</Suspense>
                 <Toaster />

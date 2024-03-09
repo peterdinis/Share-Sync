@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useState, FC } from 'react';
+import { FC } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import Link from 'next/link';
 import Input from '../shared/Input';
@@ -17,11 +17,6 @@ interface IRegisterFormData {
 const RegisterForm: FC = () => {
     const router = useRouter();
     const { register, handleSubmit, formState: { errors } } = useForm<IRegisterFormData>();
-    
-    const [credentials, setCredentials] = useState({
-        email: '',
-        password: '',
-    });
     const { toast } = useToast();
 
     const registerUser: SubmitHandler<IRegisterFormData> = async (data: IRegisterFormData) => {
@@ -50,7 +45,6 @@ const RegisterForm: FC = () => {
                                 <Input
                                     id='email'
                                     type='email'
-                                    value={credentials.email}
                                     {...register('email', { required: true })} 
                                 />
                                 {errors.email && <p className="text-red-700 font-bold text-xl">Email is required</p>}
@@ -65,7 +59,6 @@ const RegisterForm: FC = () => {
                                 <Input
                                     type='password'
                                     id='password'
-                                    value={credentials.password}
                                     {...register('password', { required: true })}
                                 />
                                 {errors.password && <p className='text-red-700 font-bold text-xl'>Password is required</p>}
