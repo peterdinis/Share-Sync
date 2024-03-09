@@ -16,8 +16,6 @@ const Navigation: FC = () => {
         setMobileMenuOpen(!isMobileMenuOpen);
     };
 
-    console.log(getUserEmail)
-
     return (
         <section className='w-full py-4 px-6 bg-white shadow-md dark:bg-zinc-800'>
             <div className='flex items-center justify-between'>
