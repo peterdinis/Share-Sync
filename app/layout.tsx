@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Navigation from './_components/shared/Navigation';
 import { Toaster } from '@/components/ui/toaster';
+import { Suspense } from 'react';
+import Loader from './_components/shared/Loader';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,7 +22,7 @@ export default function RootLayout({
         <html lang='en'>
             <body className={inter.className}>
                 <Navigation />
-                {children}
+                <Suspense fallback={<Loader />}>{children}</Suspense>
                 <Toaster />
             </body>
         </html>

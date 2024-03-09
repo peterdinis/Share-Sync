@@ -39,7 +39,7 @@ const Sidebar: FC = () => {
                             <div className='mt-8'>
                                 <Button variant={'ghost'} value='sm'>
                                     <Upload />
-                                    <UploadModal modalText='Upload file'/>
+                                    <UploadModal modalText='Upload file' />
                                 </Button>
                             </div>
 

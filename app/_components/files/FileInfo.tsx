@@ -1,9 +1,7 @@
-import {FC} from "react";
+import { FC } from 'react';
 
 const FileInfo: FC = () => {
-    return (
-        <></>
-    )
-}
+    return <></>;
+};
 
 export default FileInfo;
