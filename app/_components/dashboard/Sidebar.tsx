@@ -12,6 +12,7 @@ import {
     TooltipTrigger,
 } from '@/components/ui/tooltip';
 import UploadModal from '../files/UploadModal';
+import { AiOutlineTeam } from "react-icons/ai";
 
 const Sidebar: FC = () => {
     const [collapsed, setSidebarCollapsed] = useState(false);
@@ -47,6 +48,13 @@ const Sidebar: FC = () => {
                                 <Button variant={'ghost'} value='sm'>
                                     <Files />
                                     <Link href='/dashboard'>My all files</Link>
+                                </Button>
+                            </div>
+
+                            <div className='mt-8'>
+                                <Button variant={'ghost'} value='sm'>
+                                    <AiOutlineTeam className='w-8 h-8' />
+                                    <Link href='/teams'>My teams</Link>
                                 </Button>
                             </div>
                         </div>
@@ -87,6 +95,25 @@ const Sidebar: FC = () => {
                                                 </Link>
                                                 <TooltipContent>
                                                     My files
+                                                </TooltipContent>
+                                            </Button>
+                                        </TooltipTrigger>
+                                    </Tooltip>
+                                </TooltipProvider>
+                            </div>
+                            <div className='mt-8'>
+                                <TooltipProvider>
+                                    <Tooltip>
+                                        <TooltipTrigger>
+                                            <Button
+                                                variant={'ghost'}
+                                                size={'sm'}
+                                            >
+                                                <Link href='/teams'>
+                                                    <AiOutlineTeam className='w-8 h-8' />
+                                                </Link>
+                                                <TooltipContent>
+                                                    My Teams
                                                 </TooltipContent>
                                             </Button>
                                         </TooltipTrigger>
