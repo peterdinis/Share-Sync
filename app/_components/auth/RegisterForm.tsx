@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation';
 import { FC } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import Link from 'next/link';
-import Input from '../shared/Input';
 import { Button } from '@/components/ui/button';
 import {useForm, SubmitHandler} from "react-hook-form";
 import { account } from '@/app/_appwrite/connect';
@@ -22,7 +21,23 @@ const RegisterForm: FC = () => {
     const registerUser: SubmitHandler<IRegisterFormData> = async (data: IRegisterFormData) => {
         const { email, password } = data;
         const response = await account.create('unique()', email, password);
-        console.log(response)
+        
+        if(response.status === true) {
+            toast({
+                duration: 2000,
+                className: "bg-green-500",
+                title: "Account was created successfully"
+            })
+            router.push("/login");
+        } else {
+            toast({
+                duration: 2000,
+                className: "bg-red-500",
+                title: "Account was not created"
+            });
+
+            return;
+        }
     }
 
     return (
@@ -42,12 +57,13 @@ const RegisterForm: FC = () => {
                                 <div className='text-sm font-bold text-gray-700 tracking-wide'>
                                     Email Address
                                 </div>
-                                <Input
+                                <input
                                     id='email'
                                     type='email'
+                                    className='w-full text-lg py-2 border-b border-gray-300 rounded-2xl focus:outline-none focus:border-indigo-500'
                                     {...register('email', { required: true })} 
                                 />
-                                {errors.email && <p className="text-red-700 font-bold text-xl">Email is required</p>}
+                                {errors.email && <p className="text-red-700 font-bold text-sm mt-3 ml-3">Email is required</p>}
 
                             </div>
                             <div className='mt-8'>
@@ -56,12 +72,13 @@ const RegisterForm: FC = () => {
                                         Password
                                     </div>
                                 </div>
-                                <Input
+                                <input
                                     type='password'
                                     id='password'
+                                    className='w-full text-lg py-2 border-b border-gray-300 rounded-2xl focus:outline-none focus:border-indigo-500'
                                     {...register('password', { required: true })}
                                 />
-                                {errors.password && <p className='text-red-700 font-bold text-xl'>Password is required</p>}
+                                {errors.password && <p className='text-red-700 font-bold text-sm mt-3 ml-3'>Password is required</p>}
                             </div>
                             <div className='mt-10'>
                                 <Button size={'lg'}>
