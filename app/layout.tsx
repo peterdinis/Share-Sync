@@ -3,12 +3,9 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Navigation from './_components/shared/Navigation';
 import { Toaster } from '@/components/ui/toaster';
-<<<<<<< HEAD
 import ScrollToTopWrapper from './_components/shared/ScrollToTopWrapper';
-=======
 import { Suspense } from 'react';
 import Loader from './_components/shared/Loader';
->>>>>>> main
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -26,12 +23,9 @@ export default function RootLayout({
         <html lang='en'>
             <body className={inter.className}>
                 <Navigation />
-<<<<<<< HEAD
                 {children}
                 <ScrollToTopWrapper />
-=======
                 <Suspense fallback={<Loader />}>{children}</Suspense>
->>>>>>> main
                 <Toaster />
             </body>
         </html>
