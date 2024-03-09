@@ -1,19 +1,25 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useState, ChangeEvent, FC } from 'react';
+import { FC } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import Link from 'next/link';
-import Input from '../shared/Input';
 import { Button } from '@/components/ui/button';
+import {useForm, SubmitHandler} from "react-hook-form";
+import { account } from '@/app/_appwrite/connect';
+import Cookie from "js-cookie";
+
+interface ILoginFormData {
+    email: string;
+    password: string;
+}
 
 const LoginForm: FC = () => {
     const router = useRouter();
     const { toast } = useToast();
-    const [credentials, setCredentials] = useState({
-        email: '',
-        password: '',
-    });
+    const { register, handleSubmit, formState: { errors } } = useForm<ILoginFormData>();
+    const { toast } = useToast();
+
 
     const loginUser = async () => {
         try {
