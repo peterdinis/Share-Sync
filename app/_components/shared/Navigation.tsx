@@ -6,17 +6,17 @@ import { Button } from '@/components/ui/button';
 import { FC, JSX, SVGProps } from 'react';
 import { SiFiles } from 'react-icons/si';
 import { CiMenuBurger } from 'react-icons/ci';
-import { useAuthStore } from '@/app/_store/authStore';
+import Cookie from "js-cookie";
 
 const Navigation: FC = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const { user } = useAuthStore();
-
-    console.log(user);
+    const getUserEmail = Cookie.get("loggedUserEmail");
 
     const toggleMobileMenu = () => {
         setMobileMenuOpen(!isMobileMenuOpen);
     };
+
+    console.log(getUserEmail)
 
     return (
         <section className='w-full py-4 px-6 bg-white shadow-md dark:bg-zinc-800'>
@@ -27,7 +27,7 @@ const Navigation: FC = () => {
                     </Link>
                 </div>
                 <div className='hidden md:flex space-x-4'>
-                    {!user ? (
+                    {!getUserEmail ? (
                         <>
                             <Link
                                 className='text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'
@@ -52,7 +52,7 @@ const Navigation: FC = () => {
                     ) : (
                         <>
                             <div className='text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'>
-                                {user?.providerUid}
+                                {getUserEmail}
                             </div>
                         </>
                     )}
@@ -73,7 +73,7 @@ const Navigation: FC = () => {
                 className={`mt-4 md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}
                 id='mobile-menu'
             >
-                {!user ? (
+                {!getUserEmail ? (
                     <>
                         <Link
                             className='block py-1 text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'
@@ -97,7 +97,7 @@ const Navigation: FC = () => {
                 ) : (
                     <>
                         <div className='text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'>
-                            {user?.providerUid}
+                            {getUserEmail}
                         </div>
                     </>
                 )}

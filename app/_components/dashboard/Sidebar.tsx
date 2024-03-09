@@ -16,6 +16,7 @@ import { AiOutlineTeam } from 'react-icons/ai';
 import { IoMdLogOut } from 'react-icons/io';
 import { account } from '@/app/_appwrite/connect';
 import { useRouter } from 'next/navigation';
+import Cookie from "js-cookie";
 
 const Sidebar: FC = () => {
     const [collapsed, setSidebarCollapsed] = useState(false);
@@ -23,7 +24,8 @@ const Sidebar: FC = () => {
 
     const logoutUser = async () => {
         await account.deleteSession('current');
-        router.push('/login');
+        Cookie.remove("loggedUserEmail");
+        window.location.replace("/login");
     };
 
     return (

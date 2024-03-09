@@ -1,6 +1,5 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { FC } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import Link from 'next/link';
@@ -16,7 +15,6 @@ interface ILoginFormData {
 }
 
 const LoginForm: FC = () => {
-    const router = useRouter();
     const { setUser } = useAuthStore();
     const { toast } = useToast();
     const {
@@ -39,8 +37,9 @@ const LoginForm: FC = () => {
                 className: 'bg-green-500',
                 title: 'Successfull login',
             });
-            setUser(Cookie.set("User", response as unknown as string));
-            router.push('/dashboard');
+            setUser(response);
+            Cookie.set("loggedUserEmail", response?.providerUid);
+            window.location.replace("/dashboard");
         } else {
             toast({
                 duration: 2000,
