@@ -69,7 +69,7 @@ const Sidebar: FC = () => {
                             </div>
 
                             <div className='mt-8'>
-                                <Button variant={'ghost'} value='sm'>
+                                <Button onClick={logoutUser} variant={'ghost'} value='sm'>
                                     <IoMdLogOut className='w-8 h-8' />
                                     <span>Logout</span>
                                 </Button>
@@ -144,6 +144,7 @@ const Sidebar: FC = () => {
                                             <Button
                                                 variant={'ghost'}
                                                 size={'sm'}
+                                                onClick={logoutUser}
                                             >
                                                 <span>
                                                     <IoMdLogOut className='w-8 h-8' />

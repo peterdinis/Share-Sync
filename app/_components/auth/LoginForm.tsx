@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { account } from '@/app/_appwrite/connect';
 import { useAuthStore } from '@/app/_store/authStore';
+import Cookie from "js-cookie";
 
 interface ILoginFormData {
     email: string;
@@ -38,7 +39,7 @@ const LoginForm: FC = () => {
                 className: 'bg-green-500',
                 title: 'Successfull login',
             });
-            setUser(response);
+            setUser(Cookie.set("User", response as unknown as string));
             router.push('/dashboard');
         } else {
             toast({
