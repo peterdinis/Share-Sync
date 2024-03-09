@@ -88,8 +88,12 @@ const RegisterForm: FC = () => {
                                         id='password'
                                         className='w-full text-lg py-2 border-b border-gray-300 rounded-2xl focus:outline-none focus:border-indigo-500'
                                         {...register('password', {
-                                            required: true,
-                                        })}
+                                            required: 'Password is required',
+                                            minLength: {
+                                              value: 4,
+                                              message: 'Password must be at least 4 characters long',
+                                            },
+                                          })}
                                     />
                                     {errors.password && (
                                         <p className='text-red-700 font-bold text-sm mt-3 ml-3'>
