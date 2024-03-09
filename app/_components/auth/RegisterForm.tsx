@@ -6,6 +6,13 @@ import { useToast } from '@/components/ui/use-toast';
 import Link from 'next/link';
 import Input from '../shared/Input';
 import { Button } from '@/components/ui/button';
+import {useForm, SubmitHandler} from "react-hook-form";
+import { account } from '@/app/_appwrite/connect';
+
+interface IRegisterFormData {
+    email: string;
+    password: string;
+}
 
 const RegisterForm: FC = () => {
     const router = useRouter();
