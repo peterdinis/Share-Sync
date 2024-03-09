@@ -11,6 +11,9 @@ import { useAuthStore } from '@/app/_store/authStore';
 const Navigation: FC = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
     const { user } = useAuthStore();
+
+    console.log(user);
+
     const toggleMobileMenu = () => {
         setMobileMenuOpen(!isMobileMenuOpen);
     };
@@ -49,7 +52,7 @@ const Navigation: FC = () => {
                     ) : (
                         <>
                             <div className='text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'>
-                                {user?.email}
+                                {user?.providerUid}
                             </div>
                         </>
                     )}
@@ -94,7 +97,7 @@ const Navigation: FC = () => {
                 ) : (
                     <>
                         <div className='text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'>
-                            {user?.email}
+                            {user?.providerUid}
                         </div>
                     </>
                 )}

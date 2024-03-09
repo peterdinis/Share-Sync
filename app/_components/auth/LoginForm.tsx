@@ -16,7 +16,7 @@ interface ILoginFormData {
 
 const LoginForm: FC = () => {
     const router = useRouter();
-    const {setUser} = useAuthStore();
+    const { setUser } = useAuthStore();
     const { toast } = useToast();
     const {
         register,
@@ -32,19 +32,19 @@ const LoginForm: FC = () => {
             email,
             password
         );
-        if(response.current === true) {
+        if (response.current === true) {
             toast({
                 duration: 2000,
-                className: "bg-green-500",
-                title: "Successfull login"
-            })
+                className: 'bg-green-500',
+                title: 'Successfull login',
+            });
             setUser(response);
-            router.push("/dashboard");
+            router.push('/dashboard');
         } else {
             toast({
                 duration: 2000,
-                className: "bg-red-500",
-                title: "Login failed"
+                className: 'bg-red-500',
+                title: 'Login failed',
             });
 
             return;
