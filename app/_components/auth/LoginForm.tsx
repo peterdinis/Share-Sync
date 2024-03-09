@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { account } from '@/app/_appwrite/connect';
-import Cookie from 'js-cookie';
 
 interface ILoginFormData {
     email: string;
@@ -31,23 +30,22 @@ const LoginForm: FC = () => {
             email,
             password
         );
-        console.log(response);
-        /*  if(response.status === true) {
+        if(response.current === true) {
             toast({
                 duration: 2000,
                 className: "bg-green-500",
-                title: "Account was created successfully"
+                title: "Successfull login"
             })
-            router.push("/login");
+            router.push("/dashboard");
         } else {
             toast({
                 duration: 2000,
                 className: "bg-red-500",
-                title: "Account was not created"
+                title: "Login failed"
             });
 
             return;
-        } */
+        }
     };
 
     return (
