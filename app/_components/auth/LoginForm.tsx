@@ -1,6 +1,5 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { FC } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import Link from 'next/link';
@@ -8,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { account } from '@/app/_appwrite/connect';
 import { useAuthStore } from '@/app/_store/authStore';
+import Cookie from "js-cookie";
 
 interface ILoginFormData {
     email: string;
@@ -15,7 +15,6 @@ interface ILoginFormData {
 }
 
 const LoginForm: FC = () => {
-    const router = useRouter();
     const { setUser } = useAuthStore();
     const { toast } = useToast();
     const {
@@ -39,7 +38,8 @@ const LoginForm: FC = () => {
                 title: 'Successfull login',
             });
             setUser(response);
-            router.push('/dashboard');
+            Cookie.set("loggedUserEmail", response?.providerUid);
+            window.location.replace("/dashboard");
         } else {
             toast({
                 duration: 2000,
