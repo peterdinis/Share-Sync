@@ -16,30 +16,20 @@ interface IRegisterFormData {
 
 const RegisterForm: FC = () => {
     const router = useRouter();
-
+    const { register, handleSubmit, formState: { errors } } = useForm<IRegisterFormData>();
+    
     const [credentials, setCredentials] = useState({
         email: '',
         password: '',
     });
     const { toast } = useToast();
 
-    const registerUser = async () => {
-        try {
-            toast({
-                title: 'Registeration was successull',
-                className: 'bg-green-400',
-                duration: 2000,
-            });
-            router.push('/login');
-        } catch (error) {
-            toast({
-                title: 'Register failed',
-                variant: 'destructive',
-                duration: 2000,
-            });
-            router.push('/register');
-        }
-    };
+    const registerUser: SubmitHandler<IRegisterFormData> = async (data) => {
+        const { email, password } = data;
+        const response = await account.create('unique()', email, password);
+        console.log(response)
+    }
+
     return (
         <>
             <div className='flex justify-center align-top'>
@@ -91,7 +81,7 @@ const RegisterForm: FC = () => {
                                 />
                             </div>
                             <div className='mt-10'>
-                                <Button size={'lg'} onClick={registerUser}>
+                                <Button size={'lg'}>
                                     Register
                                 </Button>
                             </div>
