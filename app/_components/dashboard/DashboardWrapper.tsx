@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Sidebar from './Sidebar';
+import Sidebar from './sidebar/Sidebar';
 import DashboardContent from './DashboardContent';
 
 const DashboardWrapper: FC = () => {

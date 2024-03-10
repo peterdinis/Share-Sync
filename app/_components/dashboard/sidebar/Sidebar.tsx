@@ -14,13 +14,11 @@ import {
 import { AiOutlineTeam } from 'react-icons/ai';
 import { IoMdLogOut } from 'react-icons/io';
 import { account } from '@/app/_appwrite/connect';
-import { useRouter } from 'next/navigation';
 import Cookie from 'js-cookie';
 import UploadFile from '../files/UploadFile';
 
 const Sidebar: FC = () => {
     const [collapsed, setSidebarCollapsed] = useState(false);
-    const router = useRouter();
 
     const logoutUser = async () => {
         await account.deleteSession('current');
@@ -85,7 +83,7 @@ const Sidebar: FC = () => {
                 ) : (
                     <div>
                         <div className='mt-8'>
-                            <div className='mt-8'>
+                            <div>
                                 <TooltipProvider>
                                     <Tooltip>
                                         <TooltipTrigger>
@@ -105,7 +103,7 @@ const Sidebar: FC = () => {
                                     </Tooltip>
                                 </TooltipProvider>
                             </div>
-                            <div className='mt-8'>
+                            <div>
                                 <TooltipProvider>
                                     <Tooltip>
                                         <TooltipTrigger>
