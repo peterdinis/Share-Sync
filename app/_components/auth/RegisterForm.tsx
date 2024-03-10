@@ -69,11 +69,13 @@ const RegisterForm: FC = () => {
                                         className='w-full text-lg py-2 border-b border-gray-300 rounded-2xl focus:outline-none focus:border-indigo-500'
                                         {...register('email', {
                                             required: true,
+                                            pattern:
+                                                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                                         })}
                                     />
                                     {errors.email && (
                                         <p className='text-red-700 font-bold text-sm mt-3 ml-3'>
-                                            Email is required
+                                            Please check email
                                         </p>
                                     )}
                                 </div>
@@ -88,12 +90,17 @@ const RegisterForm: FC = () => {
                                         id='password'
                                         className='w-full text-lg py-2 border-b border-gray-300 rounded-2xl focus:outline-none focus:border-indigo-500'
                                         {...register('password', {
-                                            required: true,
+                                            required: 'Password is required',
+                                            minLength: {
+                                                value: 4,
+                                                message:
+                                                    'Password must be at least 4 characters long',
+                                            },
                                         })}
                                     />
                                     {errors.password && (
                                         <p className='text-red-700 font-bold text-sm mt-3 ml-3'>
-                                            Password is required
+                                            Please check password
                                         </p>
                                     )}
                                 </div>

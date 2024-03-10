@@ -20,11 +20,11 @@ const HeroWrapper: FC = () => {
                         Assumenda reiciendis eligendi numquam.
                     </pre>
                     <div className='flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start'>
-                        <Button variant={"default"} size={"lg"}>
-                            <Link href="/login">Login</Link>
+                        <Button variant={'default'} size={'lg'}>
+                            <Link href='/login'>Login</Link>
                         </Button>
-                        <Button variant={"secondary"} size={"lg"}>
-                            <Link href="/register">Register</Link>
+                        <Button variant={'secondary'} size={'lg'}>
+                            <Link href='/register'>Register</Link>
                         </Button>
                     </div>
                 </div>
