@@ -17,7 +17,6 @@ import {
     TableRow,
 } from '@/components/ui/table';
 
-
 interface GlobalTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
     data: TData[];
@@ -40,21 +39,22 @@ export function GlobalTable<TData, TValue>({
         <div className='rounded-md border'>
             <Table>
                 <TableHeader>
-                    {headerGroups && headerGroups.map((headerGroup) => (
-                        <TableRow key={headerGroup.id}>
-                            {headerGroup.headers.map((header) => (
-                                <TableHead key={header.id}>
-                                    {header.isPlaceholder
-                                        ? null
-                                        : flexRender(
-                                              header.column.columnDef
-                                                  .header,
-                                              header.getContext(),
-                                          )}
-                                </TableHead>
-                            ))}
-                        </TableRow>
-                    ))}
+                    {headerGroups &&
+                        headerGroups.map((headerGroup) => (
+                            <TableRow key={headerGroup.id}>
+                                {headerGroup.headers.map((header) => (
+                                    <TableHead key={header.id}>
+                                        {header.isPlaceholder
+                                            ? null
+                                            : flexRender(
+                                                  header.column.columnDef
+                                                      .header,
+                                                  header.getContext()
+                                              )}
+                                    </TableHead>
+                                ))}
+                            </TableRow>
+                        ))}
                 </TableHeader>
                 <TableBody>
                     {table.getRowModel().rows?.length ? (
@@ -70,7 +70,7 @@ export function GlobalTable<TData, TValue>({
                                     >
                                         {flexRender(
                                             cell.column.columnDef.cell,
-                                            cell.getContext(),
+                                            cell.getContext()
                                         )}
                                     </TableCell>
                                 ))}

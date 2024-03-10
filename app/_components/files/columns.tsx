@@ -10,7 +10,7 @@ interface UploadedFile {
     bytes: number;
     image: string;
     createdAt: string | Date;
-};
+}
 
 export const columns = (): ColumnDef<UploadedFile>[] => {
     const router = useRouter();
@@ -35,7 +35,15 @@ export const columns = (): ColumnDef<UploadedFile>[] => {
         {
             id: 'detail',
             header: 'Detail',
-            cell: ({ row }) => <Button variant={"link"} size={"sm"} onClick={() => router.push(`/detail/${row.original.id}`)}>Detail</Button>,
+            cell: ({ row }) => (
+                <Button
+                    variant={'link'}
+                    size={'sm'}
+                    onClick={() => router.push(`/detail/${row.original.id}`)}
+                >
+                    Detail
+                </Button>
+            ),
         },
     ];
 };
