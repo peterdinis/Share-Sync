@@ -5,8 +5,9 @@ import {
     flexRender,
     getCoreRowModel,
     useReactTable,
+    getPaginationRowModel,
 } from '@tanstack/react-table';
-
+import { Button } from '@/components/ui/button';
 import {
     Table,
     TableBody,
@@ -15,6 +16,7 @@ import {
     TableHeader,
     TableRow,
 } from '@/components/ui/table';
+
 
 interface GlobalTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
@@ -26,30 +28,31 @@ export function GlobalTable<TData, TValue>({
     data,
 }: GlobalTableProps<TData, TValue>) {
     const table = useReactTable({
-        data,
+        data: data || [],
         columns,
         getCoreRowModel: getCoreRowModel(),
+        getPaginationRowModel: getPaginationRowModel(),
     });
+
+    const headerGroups = table.getHeaderGroups();
 
     return (
         <div className='rounded-md border'>
             <Table>
                 <TableHeader>
-                    {table.getHeaderGroups().map((headerGroup) => (
+                    {headerGroups && headerGroups.map((headerGroup) => (
                         <TableRow key={headerGroup.id}>
-                            {headerGroup.headers.map((header) => {
-                                return (
-                                    <TableHead key={header.id}>
-                                        {header.isPlaceholder
-                                            ? null
-                                            : flexRender(
-                                                  header.column.columnDef
-                                                      .header,
-                                                  header.getContext()
-                                              )}
-                                    </TableHead>
-                                );
-                            })}
+                            {headerGroup.headers.map((header) => (
+                                <TableHead key={header.id}>
+                                    {header.isPlaceholder
+                                        ? null
+                                        : flexRender(
+                                              header.column.columnDef
+                                                  .header,
+                                              header.getContext(),
+                                          )}
+                                </TableHead>
+                            ))}
                         </TableRow>
                     ))}
                 </TableHeader>
@@ -61,10 +64,13 @@ export function GlobalTable<TData, TValue>({
                                 data-state={row.getIsSelected() && 'selected'}
                             >
                                 {row.getVisibleCells().map((cell) => (
-                                    <TableCell key={cell.id}>
+                                    <TableCell
+                                        key={cell.id}
+                                        className='truncate'
+                                    >
                                         {flexRender(
                                             cell.column.columnDef.cell,
-                                            cell.getContext()
+                                            cell.getContext(),
                                         )}
                                     </TableCell>
                                 ))}
@@ -76,12 +82,30 @@ export function GlobalTable<TData, TValue>({
                                 colSpan={columns.length}
                                 className='h-24 text-center'
                             >
-                                No results.
+                                No Results
                             </TableCell>
                         </TableRow>
                     )}
                 </TableBody>
             </Table>
+            <div className='flex items-center justify-end space-x-2 py-4'>
+                <Button
+                    variant='default'
+                    size='sm'
+                    onClick={() => table.previousPage()}
+                    disabled={!table.getCanPreviousPage()}
+                >
+                    Last Page
+                </Button>
+                <Button
+                    variant='default'
+                    size='sm'
+                    onClick={() => table.nextPage()}
+                    disabled={!table.getCanNextPage()}
+                >
+                    Next Page
+                </Button>
+            </div>
         </div>
     );
 }
