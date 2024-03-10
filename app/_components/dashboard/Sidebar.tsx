@@ -11,12 +11,12 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from '@/components/ui/tooltip';
-import UploadModal from '../files/UploadModal';
 import { AiOutlineTeam } from 'react-icons/ai';
 import { IoMdLogOut } from 'react-icons/io';
 import { account } from '@/app/_appwrite/connect';
 import { useRouter } from 'next/navigation';
 import Cookie from 'js-cookie';
+import UploadFile from '../files/UploadFile';
 
 const Sidebar: FC = () => {
     const [collapsed, setSidebarCollapsed] = useState(false);
@@ -52,7 +52,7 @@ const Sidebar: FC = () => {
                             <div className='mt-8'>
                                 <Button variant={'ghost'} value='sm'>
                                     <Upload />
-                                    <UploadModal modalText='Upload file' />
+                                    <UploadFile />
                                 </Button>
                             </div>
 
@@ -95,7 +95,7 @@ const Sidebar: FC = () => {
                                             >
                                                 <Link href='/upload'>
                                                     <Upload />
-                                                    <UploadModal />
+                                                    <UploadFile />
                                                 </Link>
                                                 <TooltipContent>
                                                     Upload file
