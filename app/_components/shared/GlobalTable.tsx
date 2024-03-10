@@ -28,31 +28,31 @@ export function GlobalTable<TData, TValue>({
     data,
 }: GlobalTableProps<TData, TValue>) {
     const table = useReactTable({
-        data,
+        data: data || [],
         columns,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
     });
 
+    const headerGroups = table.getHeaderGroups();
+
     return (
         <div className='rounded-md border'>
             <Table>
                 <TableHeader>
-                    {table.getHeaderGroups().map((headerGroup) => (
+                    {headerGroups && headerGroups.map((headerGroup) => (
                         <TableRow key={headerGroup.id}>
-                            {headerGroup.headers.map((header) => {
-                                return (
-                                    <TableHead key={header.id}>
-                                        {header.isPlaceholder
-                                            ? null
-                                            : flexRender(
-                                                  header.column.columnDef
-                                                      .header,
-                                                  header.getContext(),
-                                              )}
-                                    </TableHead>
-                                );
-                            })}
+                            {headerGroup.headers.map((header) => (
+                                <TableHead key={header.id}>
+                                    {header.isPlaceholder
+                                        ? null
+                                        : flexRender(
+                                              header.column.columnDef
+                                                  .header,
+                                              header.getContext(),
+                                          )}
+                                </TableHead>
+                            ))}
                         </TableRow>
                     ))}
                 </TableHeader>
