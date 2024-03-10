@@ -85,7 +85,7 @@ const Sidebar: FC = () => {
                 ) : (
                     <div>
                         <div className='mt-8'>
-                            <div className='mt-8'>
+                            <div>
                                 <TooltipProvider>
                                     <Tooltip>
                                         <TooltipTrigger>
@@ -105,7 +105,7 @@ const Sidebar: FC = () => {
                                     </Tooltip>
                                 </TooltipProvider>
                             </div>
-                            <div className='mt-8'>
+                            <div>
                                 <TooltipProvider>
                                     <Tooltip>
                                         <TooltipTrigger>
