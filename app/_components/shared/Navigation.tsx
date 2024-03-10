@@ -6,17 +6,15 @@ import { Button } from '@/components/ui/button';
 import { FC, JSX, SVGProps } from 'react';
 import { SiFiles } from 'react-icons/si';
 import { CiMenuBurger } from 'react-icons/ci';
-import Cookie from "js-cookie";
+import Cookie from 'js-cookie';
 
 const Navigation: FC = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const getUserEmail = Cookie.get("loggedUserEmail");
+    const getUserEmail = Cookie.get('loggedUserEmail');
 
     const toggleMobileMenu = () => {
         setMobileMenuOpen(!isMobileMenuOpen);
     };
-
-    console.log(getUserEmail)
 
     return (
         <section className='w-full py-4 px-6 bg-white shadow-md dark:bg-zinc-800'>
