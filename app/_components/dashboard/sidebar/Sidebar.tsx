@@ -102,7 +102,7 @@ const Sidebar: FC = () => {
                                     </Tooltip>
                                 </TooltipProvider>
                             </div>
-                            <div>
+                            <div className='mt-8'>
                                 <TooltipProvider>
                                     <Tooltip>
                                         <TooltipTrigger>
