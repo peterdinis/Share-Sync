@@ -15,7 +15,7 @@ import { AiOutlineTeam } from 'react-icons/ai';
 import { IoMdLogOut } from 'react-icons/io';
 import { account } from '@/app/_appwrite/connect';
 import Cookie from 'js-cookie';
-import UploadFile from '../files/UploadFile';
+import UploadFile from '../../files/UploadFile';
 
 const Sidebar: FC = () => {
     const [collapsed, setSidebarCollapsed] = useState(false);
