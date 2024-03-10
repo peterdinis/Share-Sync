@@ -1,10 +1,14 @@
 import { FC } from "react";
 import UploadModal from "./UploadModal";
 
-const UploadFile: FC = () => {
+interface IUploadFileProps {
+    text?: string;
+}
+
+const UploadFile: FC<IUploadFileProps> = ({text}: IUploadFileProps) => {
     return (
         <>
-            <UploadModal modalText="Upload file">
+            <UploadModal modalText={text}>
 
             </UploadModal>
         </>
