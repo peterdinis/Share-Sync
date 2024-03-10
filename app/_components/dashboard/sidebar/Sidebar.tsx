@@ -11,16 +11,14 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from '@/components/ui/tooltip';
-import UploadModal from '../files/UploadModal';
+import UploadModal from '../../files/UploadModal';
 import { AiOutlineTeam } from 'react-icons/ai';
 import { IoMdLogOut } from 'react-icons/io';
 import { account } from '@/app/_appwrite/connect';
-import { useRouter } from 'next/navigation';
 import Cookie from 'js-cookie';
 
 const Sidebar: FC = () => {
     const [collapsed, setSidebarCollapsed] = useState(false);
-    const router = useRouter();
 
     const logoutUser = async () => {
         await account.deleteSession('current');
