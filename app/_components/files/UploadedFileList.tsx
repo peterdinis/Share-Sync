@@ -5,7 +5,7 @@ import { columns } from './columns';
 const UploadedFileList: FC = () => {
     return (
         <>
-            <GlobalTable columns={columns} data={[]} />
+            <GlobalTable columns={columns()} data={[]} />
         </>
     );
 };

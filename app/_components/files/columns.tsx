@@ -12,7 +12,7 @@ interface UploadedFile {
     createdAt: string | Date;
 };
 
-export const useColumns = (): ColumnDef<UploadedFile>[] => {
+export const columns = (): ColumnDef<UploadedFile>[] => {
     const router = useRouter();
 
     return [

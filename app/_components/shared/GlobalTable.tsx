@@ -82,7 +82,7 @@ export function GlobalTable<TData, TValue>({
                                 colSpan={columns.length}
                                 className='h-24 text-center'
                             >
-                                Nenašli sa žiadne záznamy
+                                No Results
                             </TableCell>
                         </TableRow>
                     )}
@@ -95,7 +95,7 @@ export function GlobalTable<TData, TValue>({
                     onClick={() => table.previousPage()}
                     disabled={!table.getCanPreviousPage()}
                 >
-                    Minulá stránka
+                    Last Page
                 </Button>
                 <Button
                     variant='default'
@@ -103,7 +103,7 @@ export function GlobalTable<TData, TValue>({
                     onClick={() => table.nextPage()}
                     disabled={!table.getCanNextPage()}
                 >
-                    Nasledujúca stránka
+                    Next Page
                 </Button>
             </div>
         </div>
