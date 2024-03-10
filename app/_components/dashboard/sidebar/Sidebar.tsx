@@ -50,7 +50,7 @@ const Sidebar: FC = () => {
                             <div className='mt-8'>
                                 <Button variant={'ghost'} value='sm'>
                                     <Upload />
-                                    <UploadFile text="Upload file" />
+                                    <UploadFile text='Upload file' />
                                 </Button>
                             </div>
 
@@ -91,10 +91,9 @@ const Sidebar: FC = () => {
                                                 variant={'ghost'}
                                                 size={'sm'}
                                             >
-                                                <Link href='/upload'>
-                                                    <Upload />
-                                                    <UploadFile />
-                                                </Link>
+                                                <Upload />
+                                                <UploadFile />
+
                                                 <TooltipContent>
                                                     Upload file
                                                 </TooltipContent>
