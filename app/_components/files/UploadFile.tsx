@@ -1,4 +1,6 @@
-import { FC } from 'react';
+'use client';
+
+import { FC, useCallback, useState } from 'react';
 import UploadModal from './UploadModal';
 import Dropzone, { useDropzone } from 'react-dropzone';
 import { FiUpload } from 'react-icons/fi';
@@ -9,12 +11,34 @@ interface IUploadFileProps {
 }
 
 const UploadFile: FC<IUploadFileProps> = ({ text }: IUploadFileProps) => {
+    const [loading, setLoading] = useState<boolean>(false);
+    const [progress, setProgress] = useState(0);
+    const onDrop = useCallback(async (acceptedFiles: File[]) => {
+        if (acceptedFiles.length > 0) {
+            const selectedImage = acceptedFiles[0];
+        }
+    }, []);
+
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({
+        onDrop,
+    });
     return (
         <>
             <UploadModal modalText={text}>
-                <div className=' bg-black text-white flex items-center py-2 px-3 rounded-md hover:bg-opacity-80'>
-                    <FiUpload size='1.2em' />
-                    <span className=' ml-2 text-sm'>Upload Image</span>
+                <div
+                    {...getRootProps()}
+                    className=' flex items-center justify-center w-full'
+                >
+                    <Input
+              {...getInputProps()}
+              id="dropzone-file"
+              accept="image/png, image/jpeg"
+              type="file"
+              className='bg-green-500'
+              placeholder='TU som'
+              /* disabled={loading || uploadedImagePath !== null}
+              onChange={handleImageChange} */
+            />
                 </div>
             </UploadModal>
         </>
