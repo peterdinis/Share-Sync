@@ -14,6 +14,8 @@ import { motion } from 'framer-motion';
 import getScrollAnimation from '@/lib/scrollAnimation';
 import Link from 'next/link';
 
+/* TODO: Later break cards to new component */
+
 const TeamsCards: FC = () => {
     const scrollAnimation = useMemo(() => getScrollAnimation(), []);
 
