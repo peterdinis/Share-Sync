@@ -2,8 +2,8 @@
 
 import { FC, useState } from 'react';
 import UploadModal from './UploadModal';
-import { uploadFile } from '@/app/_appwrite/services/uploadFunctions';
 import { toast } from "@/components/ui/use-toast";
+import { account, storage } from '@/app/_appwrite/connect';
 
 interface IUploadFileProps {
     text?: string;
@@ -11,12 +11,18 @@ interface IUploadFileProps {
 
 const UploadFile: FC<IUploadFileProps> = ({ text }: IUploadFileProps) => {
     const [image, setImage] = useState<File | null>(null);
-
+    const foo = account.get();
+    console.log("F", foo);
+    foo.then(function (response) {
+        console.log(response); // Success
+    }, function (error) {
+        console.log(error); // Failure
+    });
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault(); // Prevent the default form submission behavior
-        if (image) {
+        if (image && await foo) {
             try {
-                const response = await uploadFile(image);
+                const response = await storage.createFile(process.env.NEXT_PUBLIC_BUCKET_ID as unknown as string, (await foo).$id, image)
                 console.log(response);
                 toast({
                     duration: 2000,
