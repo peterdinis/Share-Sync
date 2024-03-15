@@ -25,6 +25,11 @@ html::-webkit-scrollbar-track {
     background: linear-gradient(90deg, #434343, #434343 1px, #111 0, #111);
 }
 
+.has-mask {
+    position: absolute;
+    clip: rect(10px, 150px, 130px, 10px);
+}
+
 @layer base {
     :root {
         --background: 0 0% 100%;
