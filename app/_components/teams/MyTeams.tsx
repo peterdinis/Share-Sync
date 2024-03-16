@@ -8,7 +8,7 @@ const MyTeams: FC = () => {
             <Sidebar />
             <TeamsWrapper />
         </div>
-    )
+    );
 };
 
 export default MyTeams;

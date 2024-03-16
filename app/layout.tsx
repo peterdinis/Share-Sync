@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import Navigation from './_components/shared/Navigation';
+import Navigation from './_components/shared/navigation/Navigation';
 import { Toaster } from '@/components/ui/toaster';
 import ScrollToTopWrapper from './_components/shared/ScrollToTopWrapper';
 import { Suspense } from 'react';

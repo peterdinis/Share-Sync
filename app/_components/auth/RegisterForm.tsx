@@ -6,7 +6,7 @@ import { useToast } from '@/components/ui/use-toast';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { account } from '@/app/_appwrite/connect';
+import { account, ID } from '@/app/_appwrite/connect';
 
 interface IRegisterFormData {
     email: string;
@@ -26,23 +26,23 @@ const RegisterForm: FC = () => {
         data: IRegisterFormData
     ) => {
         const { email, password } = data;
-        const response = await account.create('unique()', email, password);
+        const response = await account.create(ID.unique(), email, password);
 
-        if (response.status === true) {
+        try {
+            if (response.status === true) {
+                toast({
+                    duration: 2000,
+                    className: 'bg-green-500',
+                    title: 'Account was created successfully',
+                });
+                router.push('/login');
+            }
+        } catch (error: any) {
             toast({
                 duration: 2000,
                 className: 'bg-green-500',
-                title: 'Account was created successfully',
+                title: `${error?.message!}`,
             });
-            router.push('/login');
-        } else {
-            toast({
-                duration: 2000,
-                className: 'bg-red-500',
-                title: 'Account was not created',
-            });
-
-            return;
         }
     };
 

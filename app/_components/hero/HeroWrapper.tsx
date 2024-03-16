@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import Image from "next/image";
-import heroImg from "../../../lib/hero.png"
+import Image from 'next/image';
+import heroImg from '../../../lib/hero.png';
 
 const HeroWrapper: FC = () => {
     return (
