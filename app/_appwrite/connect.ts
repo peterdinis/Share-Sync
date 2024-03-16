@@ -1,4 +1,4 @@
-import { Account, Client, Teams, Storage } from 'appwrite';
+import { Account, Client, Storage } from 'appwrite';
 
 const client = new Client();
 
@@ -7,7 +7,6 @@ client
     .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT as unknown as string);
 
 export const account = new Account(client);
-export const teams = new Teams(client);
 export const storage = new Storage(client);
 
 export { ID } from 'appwrite';
