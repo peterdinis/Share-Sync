@@ -26,8 +26,6 @@ const Navigation: FC = () => {
 
     console.log('U', user);
 
-    const getUserEmail = '';
-
     return (
         <section className='w-full py-4 px-6 bg-white shadow-md dark:bg-zinc-800'>
             <div className='flex items-center justify-between'>
@@ -37,7 +35,7 @@ const Navigation: FC = () => {
                     </Link>
                 </div>
                 <div className='hidden md:flex space-x-4'>
-                    {!getUserEmail ? (
+                    {!user?.email ? (
                         <>
                             <Link
                                 className='text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'
@@ -62,7 +60,7 @@ const Navigation: FC = () => {
                     ) : (
                         <>
                             <div className='text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'>
-                                {getUserEmail}
+                                {user?.email}
                             </div>
                         </>
                     )}
@@ -83,7 +81,7 @@ const Navigation: FC = () => {
                 className={`mt-4 md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}
                 id='mobile-menu'
             >
-                {!getUserEmail ? (
+                {!user?.email ? (
                     <>
                         <Link
                             className='block py-1 text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'
@@ -107,7 +105,7 @@ const Navigation: FC = () => {
                 ) : (
                     <>
                         <div className='text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'>
-                            {getUserEmail}
+                            {user?.email}
                         </div>
                     </>
                 )}
