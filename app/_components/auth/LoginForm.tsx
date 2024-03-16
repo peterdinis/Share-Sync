@@ -36,13 +36,13 @@ const LoginForm: FC = () => {
                     title: 'Successfull login',
                 });
                 window.location.replace('/dashboard');
-            } 
-        } catch(error: any) {
+            }
+        } catch (error: any) {
             toast({
                 duration: 2000,
                 className: 'bg-green-500',
                 title: `${error?.message!}`,
-            })
+            });
         }
     };
 

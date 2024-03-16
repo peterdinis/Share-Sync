@@ -28,21 +28,21 @@ const RegisterForm: FC = () => {
         const { email, password } = data;
         const response = await account.create(ID.unique(), email, password);
 
-        if (response.status === true) {
+        try {
+            if (response.status === true) {
+                toast({
+                    duration: 2000,
+                    className: 'bg-green-500',
+                    title: 'Account was created successfully',
+                });
+                router.push('/login');
+            }
+        } catch (error: any) {
             toast({
                 duration: 2000,
                 className: 'bg-green-500',
-                title: 'Account was created successfully',
+                title: `${error?.message!}`,
             });
-            router.push('/login');
-        } else {
-            toast({
-                duration: 2000,
-                className: 'bg-red-500',
-                title: 'Account was not created',
-            });
-
-            return;
         }
     };
 
