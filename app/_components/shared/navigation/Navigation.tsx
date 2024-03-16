@@ -1,11 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { FC } from 'react';
 import { account } from '@/app/_appwrite/connect';
 import { HomeIcon, MenuIcon } from './Icons';
+import { Loader2 } from 'lucide-react';
 
 const Navigation: FC = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -56,9 +57,11 @@ const Navigation: FC = () => {
                         </>
                     ) : (
                         <>
-                            <div className='text-zinc-800 font-bold hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'>
-                                {user?.email}
-                            </div>
+                            <Suspense fallback={<Loader2 />}>
+                                <div className='text-zinc-800 font-bold hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'>
+                                    {user?.email}
+                                </div>
+                            </Suspense>
                         </>
                     )}
                 </div>
