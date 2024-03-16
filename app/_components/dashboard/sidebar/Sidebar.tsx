@@ -62,13 +62,6 @@ const Sidebar: FC = () => {
                             </div>
 
                             <div className='mt-8'>
-                                <Button variant={'ghost'} value='sm'>
-                                    <AiOutlineTeam className='w-8 h-8' />
-                                    <Link href='/teams'>My teams</Link>
-                                </Button>
-                            </div>
-
-                            <div className='mt-8'>
                                 <Button
                                     onClick={logoutUser}
                                     variant={'ghost'}
@@ -115,25 +108,6 @@ const Sidebar: FC = () => {
                                                 </Link>
                                                 <TooltipContent>
                                                     My files
-                                                </TooltipContent>
-                                            </Button>
-                                        </TooltipTrigger>
-                                    </Tooltip>
-                                </TooltipProvider>
-                            </div>
-                            <div className='mt-8'>
-                                <TooltipProvider>
-                                    <Tooltip>
-                                        <TooltipTrigger>
-                                            <Button
-                                                variant={'ghost'}
-                                                size={'sm'}
-                                            >
-                                                <Link href='/teams'>
-                                                    <AiOutlineTeam className='w-8 h-8' />
-                                                </Link>
-                                                <TooltipContent>
-                                                    My Teams
                                                 </TooltipContent>
                                             </Button>
                                         </TooltipTrigger>
