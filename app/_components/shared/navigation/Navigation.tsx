@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { FC} from 'react';
+import { FC } from 'react';
 import { account } from '@/app/_appwrite/connect';
 import { HomeIcon, MenuIcon } from './Icons';
 

@@ -28,21 +28,21 @@ const LoginForm: FC = () => {
             email,
             password
         );
-        if (response.current === true) {
+        try {
+            if (response.current === true) {
+                toast({
+                    duration: 2000,
+                    className: 'bg-green-500',
+                    title: 'Successfull login',
+                });
+                window.location.replace('/dashboard');
+            } 
+        } catch(error: any) {
             toast({
                 duration: 2000,
                 className: 'bg-green-500',
-                title: 'Successfull login',
-            });
-            window.location.replace('/dashboard');
-        } else {
-            toast({
-                duration: 2000,
-                className: 'bg-red-500',
-                title: 'Login failed',
-            });
-
-            return;
+                title: `${error?.message!}`,
+            })
         }
     };
 

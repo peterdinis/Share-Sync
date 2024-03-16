@@ -16,14 +16,28 @@ import { IoMdLogOut } from 'react-icons/io';
 import { account } from '@/app/_appwrite/connect';
 import Cookie from 'js-cookie';
 import UploadFile from '../../files/UploadFile';
+import { toast } from '@/components/ui/use-toast';
 
 const Sidebar: FC = () => {
     const [collapsed, setSidebarCollapsed] = useState(false);
 
     const logoutUser = async () => {
-        await account.deleteSession('current');
-        Cookie.remove('loggedUserEmail');
-        window.location.replace('/login');
+        try {
+            await account.deleteSession('current');
+            Cookie.remove('loggedUserEmail');
+            toast({
+                duration: 2000,
+                title: 'Logout was successull',
+                className: 'bg-green-500',
+            });
+            window.location.replace('/login');
+        } catch (error) {
+            toast({
+                duration: 2000,
+                title: 'Logout failed',
+                className: 'bg-red-500',
+            });
+        }
     };
 
     return (
