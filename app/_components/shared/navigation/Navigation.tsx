@@ -23,8 +23,6 @@ const Navigation: FC = () => {
         getUser();
     }, []);
 
-    console.log('U', user);
-
     return (
         <section className='w-full py-4 px-6 bg-white shadow-md dark:bg-zinc-800'>
             <div className='flex items-center justify-between'>
@@ -58,7 +56,7 @@ const Navigation: FC = () => {
                         </>
                     ) : (
                         <>
-                            <div className='text-zinc-800 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'>
+                            <div className='text-zinc-800 font-bold hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100'>
                                 {user?.email}
                             </div>
                         </>
