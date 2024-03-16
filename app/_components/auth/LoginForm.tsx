@@ -6,8 +6,6 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { account } from '@/app/_appwrite/connect';
-import { useAuthStore } from '@/app/_store/authStore';
-import Cookie from 'js-cookie';
 
 interface ILoginFormData {
     email: string;
@@ -15,7 +13,6 @@ interface ILoginFormData {
 }
 
 const LoginForm: FC = () => {
-    const { setUser } = useAuthStore();
     const { toast } = useToast();
     const {
         register,
@@ -37,8 +34,6 @@ const LoginForm: FC = () => {
                 className: 'bg-green-500',
                 title: 'Successfull login',
             });
-            setUser(response);
-            Cookie.set('loggedUserEmail', response?.providerUid);
             window.location.replace('/dashboard');
         } else {
             toast({
