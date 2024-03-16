@@ -3,10 +3,9 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { FC, JSX, SVGProps } from 'react';
-import { SiFiles } from 'react-icons/si';
-import { CiMenuBurger } from 'react-icons/ci';
+import { FC} from 'react';
 import { account } from '@/app/_appwrite/connect';
+import { HomeIcon, MenuIcon } from './Icons';
 
 const Navigation: FC = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -113,13 +112,5 @@ const Navigation: FC = () => {
         </section>
     );
 };
-
-function HomeIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-    return <SiFiles {...props} />;
-}
-
-function MenuIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-    return <CiMenuBurger {...props} />;
-}
 
 export default Navigation;
