@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { account, ID } from '@/app/_appwrite/connect';
+import { Input } from '@/components/ui/input';
 
 interface IRegisterFormData {
     email: string;
@@ -63,7 +64,7 @@ const RegisterForm: FC = () => {
                                     <div className='text-sm font-bold text-gray-700 tracking-wide'>
                                         Email Address
                                     </div>
-                                    <input
+                                    <Input
                                         id='email'
                                         type='email'
                                         className='w-full text-lg py-2 border-b border-gray-300 rounded-2xl focus:outline-none focus:border-indigo-500'
@@ -85,7 +86,7 @@ const RegisterForm: FC = () => {
                                             Password
                                         </div>
                                     </div>
-                                    <input
+                                    <Input
                                         type='password'
                                         id='password'
                                         className='w-full text-lg py-2 border-b border-gray-300 rounded-2xl focus:outline-none focus:border-indigo-500'
