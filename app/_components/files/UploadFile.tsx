@@ -3,7 +3,7 @@
 import { FC, useState } from 'react';
 import UploadModal from './UploadModal';
 import { toast } from "@/components/ui/use-toast";
-import { account, storage } from '@/app/_appwrite/connect';
+import { account, storage, ID } from '@/app/_appwrite/connect';
 
 interface IUploadFileProps {
     text?: string;
@@ -22,19 +22,19 @@ const UploadFile: FC<IUploadFileProps> = ({ text }: IUploadFileProps) => {
         event.preventDefault(); // Prevent the default form submission behavior
         if (image && await foo) {
             try {
-                const response = await storage.createFile(process.env.NEXT_PUBLIC_BUCKET_ID as unknown as string, (await foo).$id, image)
+                const response = await storage.createFile(process.env.NEXT_PUBLIC_BUCKET_ID as unknown as string, ID.unique(), image)
                 console.log(response);
                 toast({
                     duration: 2000,
                     className: 'bg-green-500',
                     title: 'File uploaded successfully',
                 });
-            } catch (error) {
+            } catch (error: any) {
                 console.error(error);
                 toast({
                     duration: 2000,
                     className: 'bg-red-500',
-                    title: 'Error uploading file',
+                    title: `${error?.message!}`,
                 });
             }
         } else {
