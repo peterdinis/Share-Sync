@@ -3,7 +3,7 @@
 import { FC, useState } from 'react';
 import UploadModal from './UploadModal';
 import { uploadFile } from '@/app/_appwrite/services/uploadFunctions';
-import { toast } from "@/components/ui/use-toast";
+import { toast } from '@/components/ui/use-toast';
 
 interface IUploadFileProps {
     text?: string;
@@ -20,22 +20,22 @@ const UploadFile: FC<IUploadFileProps> = ({ text }: IUploadFileProps) => {
                 console.log(response);
                 toast({
                     duration: 2000,
-                    className: "bg-green-500",
-                    title: "File uploaded successfully"
+                    className: 'bg-green-500',
+                    title: 'File uploaded successfully',
                 });
             } catch (error) {
                 console.error(error);
                 toast({
                     duration: 2000,
-                    className: "bg-red-500",
-                    title: "Error uploading file"
+                    className: 'bg-red-500',
+                    title: 'Error uploading file',
                 });
             }
         } else {
             toast({
                 duration: 2000,
-                className: "bg-red-500",
-                title: "No file selected"
+                className: 'bg-red-500',
+                title: 'No file selected',
             });
         }
     };
@@ -53,13 +53,29 @@ const UploadFile: FC<IUploadFileProps> = ({ text }: IUploadFileProps) => {
                                 <div className='h-full w-full text-center flex flex-col justify-center items-center'>
                                     {/* SVG and Image placeholder */}
                                     <p className='pointer-none text-gray-500'>
-                                        <span className='text-sm'>Drag and drop</span> files here <br /> or <a href='#' className='text-blue-600 hover:underline'>select a file</a> from your computer
+                                        <span className='text-sm'>
+                                            Drag and drop
+                                        </span>{' '}
+                                        files here <br /> or{' '}
+                                        <a
+                                            href='#'
+                                            className='text-blue-600 hover:underline'
+                                        >
+                                            select a file
+                                        </a>{' '}
+                                        from your computer
                                     </p>
                                 </div>
-                                <input 
-                                    onChange={(event) => setImage(event.target.files ? event.target.files[0] : null)} 
-                                    type='file' 
-                                    className='hidden' 
+                                <input
+                                    onChange={(event) =>
+                                        setImage(
+                                            event.target.files
+                                                ? event.target.files[0]
+                                                : null
+                                        )
+                                    }
+                                    type='file'
+                                    className='hidden'
                                 />
                             </label>
                         </div>
