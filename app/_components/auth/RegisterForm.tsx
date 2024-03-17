@@ -1,5 +1,6 @@
-'use client';
+"use client"
 
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { FC } from 'react';
 import { useToast } from '@/components/ui/use-toast';
@@ -8,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { account, ID } from '@/app/_appwrite/connect';
 import { Input } from '@/components/ui/input';
+import { Eye, EyeOff } from 'lucide-react';
 
 interface IRegisterFormData {
     email: string;
@@ -22,6 +24,7 @@ const RegisterForm: FC = () => {
         formState: { errors },
     } = useForm<IRegisterFormData>();
     const { toast } = useToast();
+    const [showPassword, setShowPassword] = useState(false);
 
     const registerUser: SubmitHandler<IRegisterFormData> = async (
         data: IRegisterFormData
@@ -85,17 +88,23 @@ const RegisterForm: FC = () => {
                                         <div className='text-sm font-bold text-gray-700 tracking-wide'>
                                             Password
                                         </div>
+                                        <button
+                                            type='button'
+                                            onClick={() => setShowPassword(!showPassword)}
+                                            className='focus:outline-none text-primary text-sm underline'
+                                        >
+                                            {showPassword ? <Eye /> : <EyeOff />}
+                                        </button>
                                     </div>
                                     <Input
-                                        type='password'
+                                        type={showPassword ? 'text' : 'password'} // Toggle between text and password type
                                         id='password'
                                         className='w-full text-lg py-2 border-b border-gray-300 rounded-2xl focus:outline-none focus:border-indigo-500'
                                         {...register('password', {
                                             required: 'Password is required',
                                             minLength: {
                                                 value: 4,
-                                                message:
-                                                    'Password must be at least 4 characters long',
+                                                message: 'Password must be at least 4 characters long',
                                             },
                                         })}
                                     />
