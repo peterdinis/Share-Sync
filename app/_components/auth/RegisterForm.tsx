@@ -1,5 +1,6 @@
-'use client';
+"use client"
 
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { FC } from 'react';
 import { useToast } from '@/components/ui/use-toast';
@@ -7,6 +8,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { account, ID } from '@/app/_appwrite/connect';
+import { Input } from '@/components/ui/input';
 
 interface IRegisterFormData {
     email: string;
@@ -21,6 +23,7 @@ const RegisterForm: FC = () => {
         formState: { errors },
     } = useForm<IRegisterFormData>();
     const { toast } = useToast();
+    const [showPassword, setShowPassword] = useState(false);
 
     const registerUser: SubmitHandler<IRegisterFormData> = async (
         data: IRegisterFormData
@@ -63,7 +66,7 @@ const RegisterForm: FC = () => {
                                     <div className='text-sm font-bold text-gray-700 tracking-wide'>
                                         Email Address
                                     </div>
-                                    <input
+                                    <Input
                                         id='email'
                                         type='email'
                                         className='w-full text-lg py-2 border-b border-gray-300 rounded-2xl focus:outline-none focus:border-indigo-500'
@@ -85,16 +88,15 @@ const RegisterForm: FC = () => {
                                             Password
                                         </div>
                                     </div>
-                                    <input
-                                        type='password'
+                                    <Input
                                         id='password'
+                                        type='password'
                                         className='w-full text-lg py-2 border-b border-gray-300 rounded-2xl focus:outline-none focus:border-indigo-500'
                                         {...register('password', {
                                             required: 'Password is required',
                                             minLength: {
                                                 value: 4,
-                                                message:
-                                                    'Password must be at least 4 characters long',
+                                                message: 'Password must be at least 4 characters long',
                                             },
                                         })}
                                     />
