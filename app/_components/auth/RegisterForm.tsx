@@ -88,17 +88,11 @@ const RegisterForm: FC = () => {
                                         <div className='text-sm font-bold text-gray-700 tracking-wide'>
                                             Password
                                         </div>
-                                        <button
-                                            type='button'
-                                            onClick={() => setShowPassword(!showPassword)}
-                                            className='focus:outline-none text-primary text-sm underline'
-                                        >
-                                            {showPassword ? <Eye /> : <EyeOff />}
-                                        </button>
                                     </div>
                                     <Input
-                                        type={showPassword ? 'text' : 'password'} // Toggle between text and password type
+                                        type={showPassword ? 'text' : 'password'}
                                         id='password'
+                                        startIcon={showPassword ? <Eye /> : <EyeOff />}
                                         className='w-full text-lg py-2 border-b border-gray-300 rounded-2xl focus:outline-none focus:border-indigo-500'
                                         {...register('password', {
                                             required: 'Password is required',

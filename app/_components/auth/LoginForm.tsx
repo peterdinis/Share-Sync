@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -20,7 +20,7 @@ const LoginForm: FC = () => {
         handleSubmit,
         formState: { errors },
     } = useForm<ILoginFormData>();
-
+    const [showPassword, setShowPassword] = useState(false);
     const loginUser: SubmitHandler<ILoginFormData> = async (
         data: ILoginFormData
     ) => {
@@ -87,15 +87,15 @@ const LoginForm: FC = () => {
                                         </div>
                                     </div>
                                     <Input
-                                        type='password'
+                                        type={showPassword ? 'text' : 'password'}
                                         id='password'
+                                        startIcon={showPassword ? <Eye /> : <EyeOff />}
                                         className='w-full text-lg py-2 border-b border-gray-300 rounded-2xl focus:outline-none focus:border-indigo-500'
                                         {...register('password', {
                                             required: 'Password is required',
                                             minLength: {
                                                 value: 4,
-                                                message:
-                                                    'Password must be at least 4 characters long',
+                                                message: 'Password must be at least 4 characters long',
                                             },
                                         })}
                                     />

@@ -1,11 +1,10 @@
 import * as React from "react";
-import { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  startIcon?: LucideIcon;
-  endIcon?: LucideIcon;
+  startIcon?: any;
+  endIcon?: any;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -17,7 +16,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <div className="w-full relative">
         {StartIcon && (
           <div className="absolute left-1.5 top-1/2 transform -translate-y-1/2">
-            <StartIcon size={18} className="text-muted-foreground" />
+            {startIcon}
           </div>
         )}
         <input
