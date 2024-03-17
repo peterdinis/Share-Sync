@@ -5,7 +5,7 @@ import Navigation from './_components/shared/navigation/Navigation';
 import { Toaster } from '@/components/ui/toaster';
 import ScrollToTopWrapper from './_components/shared/ScrollToTopWrapper';
 import { Suspense } from 'react';
-import Loader from './_components/shared/Loader';
+import Loading from './loading';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,7 +24,7 @@ export default function RootLayout({
             <body className={inter.className}>
                 <Navigation />
                 <ScrollToTopWrapper />
-                <Suspense fallback={<Loader />}>{children}</Suspense>
+                <Suspense fallback={<Loading />}>{children}</Suspense>
                 <Toaster />
             </body>
         </html>
