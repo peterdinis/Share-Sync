@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { account } from '@/app/_appwrite/connect';
 import { Input } from '@/components/ui/input';
+import { Eye, EyeOff } from 'lucide-react';
 
 interface ILoginFormData {
     email: string;
