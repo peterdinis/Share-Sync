@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { account } from '@/app/_appwrite/connect';
 import { Input } from '@/components/ui/input';
-import { Eye, EyeOff } from 'lucide-react';
 
 interface ILoginFormData {
     email: string;
@@ -88,9 +87,8 @@ const LoginForm: FC = () => {
                                         </div>
                                     </div>
                                     <Input
-                                        type={showPassword ? 'text' : 'password'}
+                                        type='password'
                                         id='password'
-                                        startIcon={showPassword ? <Eye /> : <EyeOff />}
                                         className='w-full text-lg py-2 border-b border-gray-300 rounded-2xl focus:outline-none focus:border-indigo-500'
                                         {...register('password', {
                                             required: 'Password is required',
