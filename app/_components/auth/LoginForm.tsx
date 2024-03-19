@@ -1,6 +1,4 @@
-'use client';
-
-import { FC, useState } from 'react';
+import { FC} from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -20,7 +18,6 @@ const LoginForm: FC = () => {
         handleSubmit,
         formState: { errors },
     } = useForm<ILoginFormData>();
-    const [showPassword, setShowPassword] = useState(false);
     const loginUser: SubmitHandler<ILoginFormData> = async (
         data: ILoginFormData
     ) => {
@@ -29,6 +26,7 @@ const LoginForm: FC = () => {
             email,
             password
         );
+        const session = await account.createSession(response.$id, process.env.NEXT_PUBLIC_SUPER_SECRET as unknown as string);
         try {
             if (response.current === true) {
                 toast({
