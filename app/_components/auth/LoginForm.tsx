@@ -26,7 +26,7 @@ const LoginForm: FC = () => {
             email,
             password
         );
-        const session = await account.createSession(response.$id, process.env.NEXT_PUBLIC_SUPER_SECRET as unknown as string);
+        await account.createSession(response.$id, process.env.NEXT_PUBLIC_SUPER_SECRET as unknown as string);
         try {
             if (response.current === true) {
                 toast({

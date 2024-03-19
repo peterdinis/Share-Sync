@@ -1,6 +1,3 @@
-"use client"
-
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { FC } from 'react';
 import { useToast } from '@/components/ui/use-toast';
@@ -23,8 +20,6 @@ const RegisterForm: FC = () => {
         formState: { errors },
     } = useForm<IRegisterFormData>();
     const { toast } = useToast();
-    const [showPassword, setShowPassword] = useState(false);
-
     const registerUser: SubmitHandler<IRegisterFormData> = async (
         data: IRegisterFormData
     ) => {
