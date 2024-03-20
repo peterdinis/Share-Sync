@@ -31,10 +31,7 @@ const HeroWrapper: FC = () => {
                     </div>
                 </div>
                 <div className='flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128'>
-                    <Image
-                        src={heroImg}
-                        alt='Main image'
-                    />
+                    <Image src={heroImg} alt='Main image' />
                 </div>
             </div>
         </section>

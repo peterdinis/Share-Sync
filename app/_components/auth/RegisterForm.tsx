@@ -91,7 +91,8 @@ const RegisterForm: FC = () => {
                                             required: 'Password is required',
                                             minLength: {
                                                 value: 4,
-                                                message: 'Password must be at least 4 characters long',
+                                                message:
+                                                    'Password must be at least 4 characters long',
                                             },
                                         })}
                                     />

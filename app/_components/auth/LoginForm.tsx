@@ -1,4 +1,4 @@
-import { FC} from 'react';
+import { FC } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -26,7 +26,10 @@ const LoginForm: FC = () => {
             email,
             password
         );
-        await account.createSession(response.$id, process.env.NEXT_PUBLIC_SUPER_SECRET as unknown as string);
+        await account.createSession(
+            response.$id,
+            process.env.NEXT_PUBLIC_SUPER_SECRET as unknown as string
+        );
         try {
             if (response.current === true) {
                 toast({
@@ -92,7 +95,8 @@ const LoginForm: FC = () => {
                                             required: 'Password is required',
                                             minLength: {
                                                 value: 4,
-                                                message: 'Password must be at least 4 characters long',
+                                                message:
+                                                    'Password must be at least 4 characters long',
                                             },
                                         })}
                                     />
