@@ -26,7 +26,9 @@ export default function RootLayout({
                 <Navigation />
                 <ScrollToTopWrapper />
                 <Suspense fallback={<Loader />}>
-                    <PrivateWrapper>{children}</PrivateWrapper>
+                    {/*   <PrivateWrapper> */}
+                    {children}
+                    {/* </PrivateWrapper> */}
                 </Suspense>
                 <Toaster />
             </body>
