@@ -7,13 +7,12 @@ import {
     useEffect,
     useContext,
 } from 'react';
-import { useRouter } from 'next/navigation';
 import { account } from '../_appwrite/connect';
 import { Loader2 } from 'lucide-react';
 
-/* Code from appwrite models.d.ts  */
+/* Code from appwrite models.d.ts User i name this as AppwriteUser  */
 
-type User = {
+type AppwriteUser = {
     /**
      * User ID.
      */
@@ -45,7 +44,7 @@ type User = {
 };
 
 interface AuthContextType {
-    user: User | null;
+    user: AppwriteUser | null;
 }
 
 interface AuthProviderProps {
@@ -57,9 +56,8 @@ const AuthContext = createContext<AuthContextType>({
 });
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-    const router = useRouter();
     const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<AppwriteUser | null>(null);
 
     useEffect(() => {
         checkUserStatus();
@@ -70,7 +68,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             const accountDetails = await account.get();
             setUser(accountDetails);
         } catch (error) {
-            // Handle error if needed
+            
         }
         setLoading(false);
     };
