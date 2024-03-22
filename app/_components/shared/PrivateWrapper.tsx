@@ -6,7 +6,7 @@ import { useRouter, usePathname } from 'next/navigation';
 
 interface IPrivateWrapper {
     children?: ReactNode;
-} 
+}
 
 const PrivateWrapper: FC<IPrivateWrapper> = ({ children }: IPrivateWrapper) => {
     const { user } = useAuth();
@@ -17,7 +17,7 @@ const PrivateWrapper: FC<IPrivateWrapper> = ({ children }: IPrivateWrapper) => {
         const currentPath = pathname;
         const isHomePage = currentPath === '/';
 
-        if (!user && !isHomePage) { 
+        if (!user && !isHomePage) {
             router.push('/login');
         }
     }, [user]);

@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import {
     createContext,
@@ -67,9 +67,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         try {
             const accountDetails = await account.get();
             setUser(accountDetails);
-        } catch (error) {
-            
-        }
+        } catch (error) {}
         setLoading(false);
     };
 
