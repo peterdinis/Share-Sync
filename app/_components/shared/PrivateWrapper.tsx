@@ -6,7 +6,7 @@ import { useRouter, usePathname } from 'next/navigation';
 
 interface IPrivateWrapper {
     children?: ReactNode;
-}
+} 
 
 const PrivateWrapper: FC<IPrivateWrapper> = ({ children }: IPrivateWrapper) => {
     const { user } = useAuth();
