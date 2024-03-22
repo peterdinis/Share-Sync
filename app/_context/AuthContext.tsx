@@ -1,4 +1,12 @@
-import { createContext, ReactNode, useState, useEffect, useContext } from 'react';
+"use client"
+
+import {
+    createContext,
+    ReactNode,
+    useState,
+    useEffect,
+    useContext,
+} from 'react';
 import { useRouter } from 'next/navigation';
 import { account } from '../_appwrite/connect';
 import { Loader2 } from 'lucide-react';
@@ -84,4 +92,4 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
 export const useAuth = () => {
     return useContext(AuthContext);
-}
+};

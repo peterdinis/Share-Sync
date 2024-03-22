@@ -1,3 +1,5 @@
+"use client"
+
 import { FC } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import Link from 'next/link';

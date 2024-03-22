@@ -24,9 +24,9 @@ export default function RootLayout({
             <body className={inter.className}>
                 <Navigation />
                 <ScrollToTopWrapper />
-                    <AuthProvider>
+                <AuthProvider>
                     <PrivateWrapper>{children}</PrivateWrapper>
-                    </AuthProvider>
+                </AuthProvider>
                 <Toaster />
             </body>
         </html>
