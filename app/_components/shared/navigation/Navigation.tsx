@@ -15,7 +15,6 @@ const Navigation: FC = () => {
     };
 
     const [user, setUser] = useState<any>(null);
-
     useEffect(() => {
         async function getUser() {
             setUser(await account.get());
