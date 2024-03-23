@@ -6,6 +6,7 @@ import {
     useState,
     useEffect,
     useContext,
+    FC,
 } from 'react';
 import { account } from '../_appwrite/connect';
 import { Loader2 } from 'lucide-react';
@@ -55,7 +56,7 @@ const AuthContext = createContext<AuthContextType>({
     user: null,
 });
 
-export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState<AppwriteUser | null>(null);
 
