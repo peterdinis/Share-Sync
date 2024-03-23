@@ -11,7 +11,6 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { AiOutlineTeam } from 'react-icons/ai';
 import { IoMdLogOut } from 'react-icons/io';
 import { account } from '@/app/_appwrite/connect';
 import Cookie from 'js-cookie';

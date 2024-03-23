@@ -67,14 +67,18 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
     const checkUserStatus = async () => {
         try {
-            const accountDetails = await account.get();
-            setUser(accountDetails);
+            if (user) {
+                const accountDetails = await account.get();
+                setUser(accountDetails);
+            } else {
+                setUser(null); 
+            }
         } catch (error) {
             toast({
-                title: "Something went wrong user",
+                title: "Something went wrong while fetching user data",
                 duration: 2000,
                 className: "bg-red-600"
-            })
+            });
         }
         setLoading(false);
     };
