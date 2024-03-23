@@ -10,7 +10,7 @@ import {
 } from 'react';
 import { account } from '../_appwrite/connect';
 import { Loader2 } from 'lucide-react';
-import { toast} from '@/components/ui/use-toast';
+import { toast, useToast } from '@/components/ui/use-toast';
 
 /* Code from appwrite models.d.ts User i name this as AppwriteUser  */
 
