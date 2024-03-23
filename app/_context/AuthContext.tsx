@@ -10,6 +10,7 @@ import {
 } from 'react';
 import { account } from '../_appwrite/connect';
 import { Loader2 } from 'lucide-react';
+import { toast} from '@/components/ui/use-toast';
 
 /* Code from appwrite models.d.ts User i name this as AppwriteUser  */
 
@@ -68,7 +69,13 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         try {
             const accountDetails = await account.get();
             setUser(accountDetails);
-        } catch (error) {}
+        } catch (error) {
+            toast({
+                title: "Something went wrong user",
+                duration: 2000,
+                className: "bg-red-600"
+            })
+        }
         setLoading(false);
     };
 
